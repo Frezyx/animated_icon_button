@@ -43,6 +43,36 @@ Put this code in your project at an screen and learn how it works 😊
     )
 ```
 
+### Custom animation controller
+
+In order to animate your icons in a custom way, like on text changed or when pressing a button, just use the ```animationController``` property as follows. </br>
+
+```dart
+    var animationController = AnimationController(
+        vsync: this,
+        duration: Duration(milliseconds: 200),
+        reverseDuration: Duration(milliseconds: 200),
+    );
+
+    AnimatedIconButton(
+        animationController: animationController,
+        size: 35,
+        onPressed: () {
+          print("button with color pressed");
+        },
+        endIcon: Icon(
+            Icons.close,
+                color: Colors.red,
+            ),
+        startIcon: Icon(
+            Icons.add,
+            color: Colors.purple,
+        ),
+    )
+```
+
+Don't forget to remove ```duration``` from your ```AnimatedIconButton``` when using this property.
+
 ### Attributes
 
 <strong>size:</strong> The size of AnimatedIconButton <br>

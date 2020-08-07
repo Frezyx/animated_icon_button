@@ -14,6 +14,10 @@ class AnimatedIconButton extends StatefulWidget {
   final Icon endIcon;
 
   /// Animation time of the [AnimatedIconButton].
+  ///
+  /// If an [AnimationController] is specified, [Duration] must be null
+  /// in order to prevent an asynchronous animation. The [Duration] used will
+  /// be the one defined on [AnimationController]
   final Duration duration;
 
   /// The callback that is called when the button is tapped or otherwise activated.
@@ -130,6 +134,13 @@ class AnimatedIconButton extends StatefulWidget {
 
   /// The background [Color] of the [AnimatedIconButton] when button is pressed.
   final Color endBackgroundColor;
+
+  /// The custom [AnimationController] of the [AnimatedIconButton].
+  ///
+  /// When not specified the [AnimatedIconButton] will change it's icons and
+  /// background color whenever [AnimatedIconButton] is pressed.
+  final AnimationController animationController;
+
   AnimatedIconButton({
     Key key,
     this.size,
@@ -152,6 +163,7 @@ class AnimatedIconButton extends StatefulWidget {
     this.alignment,
     this.endBackgroundColor,
     this.startBackgroundColor,
+    this.animationController,
   });
   @override
   _AnimatedIconButtonState createState() => _AnimatedIconButtonState(
@@ -175,6 +187,7 @@ class AnimatedIconButton extends StatefulWidget {
         alignment: this.alignment,
         endBackgroundColor: this.endBackgroundColor,
         startBackgroundColor: this.startBackgroundColor,
+        animationController: this.animationController,
       );
 }
 
@@ -201,6 +214,7 @@ class _AnimatedIconButtonState extends State<AnimatedIconButton>
     this.alignment = Alignment.center,
     this.endBackgroundColor,
     this.startBackgroundColor,
+    this.animationController,
   });
   double size;
   Icon startIcon;
@@ -222,23 +236,53 @@ class _AnimatedIconButtonState extends State<AnimatedIconButton>
   VisualDensity visualDensity;
   EdgeInsets padding;
   Alignment alignment;
+  AnimationController animationController;
 
+  bool hasCustomAnimationController;
   Icon nowIcon;
   Color nowBackgroundColor;
   bool isIconAnimated = false;
   AnimationController _arrowAnimationController;
   Animation _arrowAnimation;
+  AnimationStatus _lastStatus;
   static const Duration defaultDuration = Duration(milliseconds: 200);
 
   @override
   void initState() {
-    _arrowAnimationController =
-        AnimationController(vsync: this, duration: duration);
+    hasCustomAnimationController = animationController != null;
+
+    if (hasCustomAnimationController) {
+      assert(duration == null,
+          'Duration must be null when defining an animationController');
+      duration = animationController.duration;
+    }
+
+    _arrowAnimationController = hasCustomAnimationController
+        ? animationController
+        : AnimationController(vsync: this, duration: duration);
+
+    if (hasCustomAnimationController) _addStatusListener();
+
     _arrowAnimation =
         Tween(begin: 0.0, end: 1.0).animate(_arrowAnimationController);
     nowIcon = startIcon;
     nowBackgroundColor = startBackgroundColor;
     super.initState();
+  }
+
+  // Changes nowIcon and backgroundColor when _arrowAnimationController.forward()
+  // and _arrowAnimationController.reverse() are called according to custom
+  // animation controller.
+  _addStatusListener() {
+    _arrowAnimationController.addStatusListener((status) {
+      if (status != _lastStatus &&
+          (status == AnimationStatus.forward ||
+              status == AnimationStatus.reverse)) {
+        _lastStatus = status;
+        _changeIcon();
+        _changeBackgroundColor();
+      }
+    });
   }
 
   _changeIcon() async {
@@ -275,14 +319,16 @@ class _AnimatedIconButtonState extends State<AnimatedIconButton>
   IconButton buildIconButton() {
     return IconButton(
       iconSize: size ?? 30,
-      onPressed: () {
-        onPressed();
-        _changeIcon();
-        _changeBackgroundColor();
-        _arrowAnimationController.isCompleted
-            ? _arrowAnimationController.reverse().then((_) => _)
-            : _arrowAnimationController.forward().then((_) => _);
-      },
+      onPressed: hasCustomAnimationController
+          ? onPressed
+          : () {
+              onPressed();
+              _changeIcon();
+              _changeBackgroundColor();
+              _arrowAnimationController.isCompleted
+                  ? _arrowAnimationController.reverse().then((_) => _)
+                  : _arrowAnimationController.forward().then((_) => _);
+            },
       icon: AnimatedBuilder(
           animation: _arrowAnimationController,
           builder: (BuildContext context, Widget child) {

@@ -71,6 +71,8 @@ In order to animate your icons in a custom way, like on text changed or when pre
     )
 ```
 
+Then, whenever you want, execute your ```animationController.forward()``` and ```animationController.reverse()``` methods to get your icons animated.
+
 Don't forget to remove ```duration``` from your ```AnimatedIconButton``` when using this property.
 
 ### Attributes

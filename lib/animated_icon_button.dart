@@ -141,7 +141,11 @@ class AnimatedIconButton extends StatefulWidget {
   /// background color whenever [AnimatedIconButton] is pressed.
   final AnimationController animationController;
 
-  double splashRadius;
+  /// The splash radius.
+  ///
+  /// If null, default splash radius of [Material.defaultSplashRadius] is used.
+  /// Field of IconButton
+  final double splashRadius;
 
   AnimatedIconButton({
     Key key,

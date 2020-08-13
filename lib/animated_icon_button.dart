@@ -141,6 +141,8 @@ class AnimatedIconButton extends StatefulWidget {
   /// background color whenever [AnimatedIconButton] is pressed.
   final AnimationController animationController;
 
+  double splashRadius;
+
   AnimatedIconButton({
     Key key,
     this.size,
@@ -164,6 +166,7 @@ class AnimatedIconButton extends StatefulWidget {
     this.endBackgroundColor,
     this.startBackgroundColor,
     this.animationController,
+    this.splashRadius,
   });
   @override
   _AnimatedIconButtonState createState() => _AnimatedIconButtonState(
@@ -188,6 +191,7 @@ class AnimatedIconButton extends StatefulWidget {
         endBackgroundColor: this.endBackgroundColor,
         startBackgroundColor: this.startBackgroundColor,
         animationController: this.animationController,
+        splashRadius: this.splashRadius,
       );
 }
 
@@ -215,6 +219,7 @@ class _AnimatedIconButtonState extends State<AnimatedIconButton>
     this.endBackgroundColor,
     this.startBackgroundColor,
     this.animationController,
+    this.splashRadius,
   });
   double size;
   Icon startIcon;
@@ -237,6 +242,7 @@ class _AnimatedIconButtonState extends State<AnimatedIconButton>
   EdgeInsets padding;
   Alignment alignment;
   AnimationController animationController;
+  double splashRadius;
 
   bool hasCustomAnimationController;
   Icon nowIcon;
@@ -351,6 +357,7 @@ class _AnimatedIconButtonState extends State<AnimatedIconButton>
       visualDensity: visualDensity,
       padding: padding ?? const EdgeInsets.all(8.0),
       alignment: alignment ?? Alignment.center,
+      splashRadius: splashRadius,
     );
   }
 }

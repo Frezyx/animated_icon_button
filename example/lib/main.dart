@@ -27,7 +27,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('animated_icon_button v0.2.0'),
+          title: Text('animated_icon_button v0.3.0'),
         ),
         body: Center(
           child: Column(

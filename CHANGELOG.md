@@ -1,3 +1,7 @@
+## 0.3.0 - 2020-08-07
+
+* Added splash radius field
+
 ## 0.2.0 - 2020-08-07
 
 * Added ability to use the Animated Controller for the Animated Icon Button

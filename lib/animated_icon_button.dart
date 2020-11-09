@@ -147,6 +147,14 @@ class AnimatedIconButton extends StatefulWidget {
   /// Field of IconButton
   final double splashRadius;
 
+  /// The callback that is called when
+  /// the button animation is completed in reverse state
+  final Function() onReverse;
+
+  /// The callback that is called when
+  /// the button animation is completed in forvard state
+  final Function() onForvard;
+
   AnimatedIconButton({
     Key key,
     this.size,
@@ -171,6 +179,8 @@ class AnimatedIconButton extends StatefulWidget {
     this.startBackgroundColor,
     this.animationController,
     this.splashRadius,
+    this.onReverse,
+    this.onForvard,
   });
   @override
   _AnimatedIconButtonState createState() => _AnimatedIconButtonState(
@@ -196,6 +206,8 @@ class AnimatedIconButton extends StatefulWidget {
         startBackgroundColor: this.startBackgroundColor,
         animationController: this.animationController,
         splashRadius: this.splashRadius,
+        onReverse: this.onReverse,
+        onForvard: this.onForvard,
       );
 }
 
@@ -224,6 +236,8 @@ class _AnimatedIconButtonState extends State<AnimatedIconButton>
     this.startBackgroundColor,
     this.animationController,
     this.splashRadius,
+    this.onReverse,
+    this.onForvard,
   });
   double size;
   Icon startIcon;
@@ -247,6 +261,8 @@ class _AnimatedIconButtonState extends State<AnimatedIconButton>
   Alignment alignment;
   AnimationController animationController;
   double splashRadius;
+  Function() onReverse;
+  Function() onForvard;
 
   bool hasCustomAnimationController;
   Icon nowIcon;
@@ -273,8 +289,13 @@ class _AnimatedIconButtonState extends State<AnimatedIconButton>
 
     if (hasCustomAnimationController) _addStatusListener();
 
-    _arrowAnimation =
-        Tween(begin: 0.0, end: 1.0).animate(_arrowAnimationController);
+    _arrowAnimation = Tween(
+      begin: 0.0,
+      end: 1.0,
+    ).animate(
+      _arrowAnimationController,
+    );
+
     nowIcon = startIcon;
     nowBackgroundColor = startBackgroundColor;
     super.initState();
@@ -315,6 +336,37 @@ class _AnimatedIconButtonState extends State<AnimatedIconButton>
     });
   }
 
+  void _onReverse() {
+    if (onReverse != null) {
+      onReverse();
+    }
+  }
+
+  void _onForvard() {
+    if (onForvard != null) {
+      onForvard();
+    }
+  }
+
+  void _runControllerMethods() {
+    _arrowAnimationController.isCompleted
+        ? _arrowAnimationController.reverse().then(
+              (_) => _onReverse(),
+            )
+        : _arrowAnimationController.forward().then(
+              (_) => _onForvard(),
+            );
+  }
+
+  void _onPressed() {
+    onPressed();
+    if (!hasCustomAnimationController) {
+      _changeIcon();
+      _changeBackgroundColor();
+      _runControllerMethods();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return nowBackgroundColor == null
@@ -329,25 +381,17 @@ class _AnimatedIconButtonState extends State<AnimatedIconButton>
   IconButton buildIconButton() {
     return IconButton(
       iconSize: size ?? 30,
-      onPressed: hasCustomAnimationController
-          ? onPressed
-          : () {
-              onPressed();
-              _changeIcon();
-              _changeBackgroundColor();
-              _arrowAnimationController.isCompleted
-                  ? _arrowAnimationController.reverse().then((_) => _)
-                  : _arrowAnimationController.forward().then((_) => _);
-            },
+      onPressed: () => _onPressed(),
       icon: AnimatedBuilder(
-          animation: _arrowAnimationController,
-          builder: (BuildContext context, Widget child) {
-            return Transform.rotate(
-              angle: _arrowAnimation.value * 2.0 * math.pi,
-              child: child,
-            );
-          },
-          child: nowIcon),
+        animation: _arrowAnimationController,
+        builder: (BuildContext context, Widget child) {
+          return Transform.rotate(
+            angle: _arrowAnimation.value * 2.0 * math.pi,
+            child: child,
+          );
+        },
+        child: nowIcon,
+      ),
       focusColor: focusColor,
       hoverColor: hoverColor,
       highlightColor: highlightColor,

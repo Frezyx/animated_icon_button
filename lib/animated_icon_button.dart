@@ -184,30 +184,30 @@ class AnimatedIconButton extends StatefulWidget {
   });
   @override
   _AnimatedIconButtonState createState() => _AnimatedIconButtonState(
-        size: this.size,
-        startIcon: this.startIcon,
-        endIcon: this.endIcon,
-        duration: this.duration,
-        onPressed: this.onPressed,
-        focusColor: this.focusColor,
-        hoverColor: this.hoverColor,
-        highlightColor: this.highlightColor,
-        splashColor: this.splashColor,
-        disabledColor: this.disabledColor,
-        focusNode: this.focusNode,
-        autofocus: this.autofocus,
-        tooltip: this.tooltip,
-        enableFeedback: this.enableFeedback,
-        constraints: this.constraints,
-        visualDensity: this.visualDensity,
-        padding: this.padding,
-        alignment: this.alignment,
-        endBackgroundColor: this.endBackgroundColor,
-        startBackgroundColor: this.startBackgroundColor,
-        animationController: this.animationController,
-        splashRadius: this.splashRadius,
-        onReverse: this.onReverse,
-        onForvard: this.onForvard,
+        size: size,
+        startIcon: startIcon,
+        endIcon: endIcon,
+        duration: duration,
+        onPressed: onPressed,
+        focusColor: focusColor,
+        hoverColor: hoverColor,
+        highlightColor: highlightColor,
+        splashColor: splashColor,
+        disabledColor: disabledColor,
+        focusNode: focusNode,
+        autofocus: autofocus,
+        tooltip: tooltip,
+        enableFeedback: enableFeedback,
+        constraints: constraints,
+        visualDensity: visualDensity,
+        padding: padding,
+        alignment: alignment,
+        endBackgroundColor: endBackgroundColor,
+        startBackgroundColor: startBackgroundColor,
+        animationController: animationController,
+        splashRadius: splashRadius,
+        onReverse: onReverse,
+        onForvard: onForvard,
       );
 }
 
@@ -239,30 +239,30 @@ class _AnimatedIconButtonState extends State<AnimatedIconButton>
     this.onReverse,
     this.onForvard,
   });
-  double size;
-  Icon startIcon;
-  Icon endIcon;
-  Color startBackgroundColor;
-  Color endBackgroundColor;
+  final double size;
+  final Icon startIcon;
+  final Icon endIcon;
+  final Color startBackgroundColor;
+  final Color endBackgroundColor;
   Duration duration;
-  Function onPressed;
-  Color focusColor;
-  Color hoverColor;
-  Color highlightColor;
-  Color splashColor;
-  Color disabledColor;
-  FocusNode focusNode;
-  bool autofocus;
-  bool enableFeedback;
-  String tooltip;
-  BoxConstraints constraints;
-  VisualDensity visualDensity;
-  EdgeInsets padding;
-  Alignment alignment;
-  AnimationController animationController;
-  double splashRadius;
-  Function() onReverse;
-  Function() onForvard;
+  final Function onPressed;
+  final Color focusColor;
+  final Color hoverColor;
+  final Color highlightColor;
+  final Color splashColor;
+  final Color disabledColor;
+  final FocusNode focusNode;
+  final bool autofocus;
+  final bool enableFeedback;
+  final String tooltip;
+  final BoxConstraints constraints;
+  final VisualDensity visualDensity;
+  final EdgeInsets padding;
+  final Alignment alignment;
+  final AnimationController animationController;
+  final double splashRadius;
+  final Function() onReverse;
+  final Function() onForvard;
 
   bool hasCustomAnimationController;
   Icon nowIcon;
@@ -304,7 +304,7 @@ class _AnimatedIconButtonState extends State<AnimatedIconButton>
   // Changes nowIcon and backgroundColor when _arrowAnimationController.forward()
   // and _arrowAnimationController.reverse() are called according to custom
   // animation controller.
-  _addStatusListener() {
+  void _addStatusListener() {
     _arrowAnimationController.addStatusListener((status) {
       if (status != _lastStatus &&
           (status == AnimationStatus.forward ||
@@ -316,7 +316,7 @@ class _AnimatedIconButtonState extends State<AnimatedIconButton>
     });
   }
 
-  _changeIcon() async {
+  void _changeIcon() async {
     var animationTime = duration.inMilliseconds;
     var halfDuration = Duration(milliseconds: animationTime ~/ 2);
     await Future.delayed(halfDuration);
@@ -325,7 +325,7 @@ class _AnimatedIconButtonState extends State<AnimatedIconButton>
     });
   }
 
-  _changeBackgroundColor() async {
+  void _changeBackgroundColor() async {
     var animationTime = duration.inMilliseconds;
     var halfDuration = Duration(milliseconds: animationTime ~/ 2);
     await Future.delayed(halfDuration);

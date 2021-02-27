@@ -1,3 +1,6 @@
+## 0.4.0 - 2021-02-27
+
+* Migrated to null safety
 ## 0.3.0 - 2020-08-07
 
 * Added splash radius field

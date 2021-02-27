@@ -5,7 +5,7 @@ import 'dart:math' as math;
 
 class AnimatedIconButton extends StatefulWidget {
   /// The size of the [AnimatedIconButton].
-  final double size;
+  final double? size;
 
   /// The icon of the [AnimatedIconButton] when button is not pressed.
   final Icon startIcon;
@@ -18,22 +18,22 @@ class AnimatedIconButton extends StatefulWidget {
   /// If an [AnimationController] is specified, [Duration] must be null
   /// in order to prevent an asynchronous animation. The [Duration] used will
   /// be the one defined on [AnimationController]
-  final Duration duration;
+  final Duration? duration;
 
   /// The callback that is called when the button is tapped or otherwise activated.
   ///
   /// If this is set to null, the button will be disabled.
-  final Function onPressed;
+  final Function? onPressed;
 
   /// The color for the button's icon when it has the input focus.
   ///
   /// Defaults to [ThemeData.focusColor] of the ambient theme.
-  final Color focusColor;
+  final Color? focusColor;
 
   /// The color for the button's icon when a pointer is hovering over it.
   ///
   /// Defaults to [ThemeData.hoverColor] of the ambient theme.
-  final Color hoverColor;
+  final Color? hoverColor;
 
   /// The secondary color of the button when the button is in the down (pressed)
   /// state. The highlight color is represented as a solid color that is overlaid over the
@@ -41,7 +41,7 @@ class AnimatedIconButton extends StatefulWidget {
   /// will show through. The highlight fades in quickly as the button is held down.
   ///
   /// Defaults to the Theme's highlight color, [ThemeData.highlightColor].
-  final Color highlightColor;
+  final Color? highlightColor;
 
   /// The primary color of the button when the button is in the down (pressed) state.
   /// The splash is represented as a circular overlay that appears above the
@@ -51,16 +51,16 @@ class AnimatedIconButton extends StatefulWidget {
   /// color has transparency then the highlight and button color will show through.
   ///
   /// Defaults to the Theme's splash color, [ThemeData.splashColor].
-  final Color splashColor;
+  final Color? splashColor;
 
   /// The color to use for the icon inside the button, if the icon is disabled.
   /// Defaults to the [ThemeData.disabledColor] of the current [Theme].
   ///
   /// The icon is disabled if [onPressed] is null.
-  final Color disabledColor;
+  final Color? disabledColor;
 
   /// {@macro flutter.widgets.Focus.focusNode}
-  final FocusNode focusNode;
+  final FocusNode? focusNode;
 
   /// {@macro flutter.widgets.Focus.autofocus}
   final bool autofocus;
@@ -79,7 +79,7 @@ class AnimatedIconButton extends StatefulWidget {
   ///
   /// This text is displayed when the user long-presses on the button and is
   /// used for accessibility.
-  final String tooltip;
+  final String? tooltip;
 
   /// Optional size constraints for the button.
   ///
@@ -99,7 +99,7 @@ class AnimatedIconButton extends StatefulWidget {
   ///
   /// The visual density uses the [visualDensity] parameter if specified,
   /// and `Theme.of(context).visualDensity` otherwise.
-  final BoxConstraints constraints;
+  final BoxConstraints? constraints;
 
   /// Defines how compact the icon button's layout will be.
   ///
@@ -109,13 +109,13 @@ class AnimatedIconButton extends StatefulWidget {
   ///
   ///  * [ThemeData.visualDensity], which specifies the [density] for all widgets
   ///    within a [Theme].
-  final VisualDensity visualDensity;
+  final VisualDensity? visualDensity;
 
   /// The padding around the button's icon. The entire padded icon will react
   /// to input gestures.
   ///
   /// This property must not be null. It defaults to 8.0 padding on all sides.
-  final EdgeInsets padding;
+  final EdgeInsets? padding;
 
   /// Defines how the icon is positioned within the IconButton.
   ///
@@ -127,32 +127,32 @@ class AnimatedIconButton extends StatefulWidget {
   ///    specify an [AlignmentGeometry].
   ///  * [AlignmentDirectional], like [Alignment] for specifying alignments
   ///    relative to text direction.
-  final Alignment alignment;
+  final Alignment? alignment;
 
   /// The background [Color] of the [AnimatedIconButton] when button is not pressed.
-  final Color startBackgroundColor;
+  final Color? startBackgroundColor;
 
   /// The background [Color] of the [AnimatedIconButton] when button is pressed.
-  final Color endBackgroundColor;
+  final Color? endBackgroundColor;
 
   /// The custom [AnimationController] of the [AnimatedIconButton].
   ///
   /// When not specified the [AnimatedIconButton] will change it's icons and
   /// background color whenever [AnimatedIconButton] is pressed.
-  final AnimationController animationController;
+  final AnimationController? animationController;
 
   /// The splash radius.
   ///
   /// If null, default splash radius of [Material.defaultSplashRadius] is used.
   /// Field of IconButton
-  final double splashRadius;
+  final double? splashRadius;
 
   AnimatedIconButton({
-    Key key,
+    Key? key,
     this.size,
-    @required this.startIcon,
-    @required this.endIcon,
-    @required this.onPressed,
+    required this.startIcon,
+    required this.endIcon,
+    required this.onPressed,
     this.focusColor,
     this.hoverColor,
     this.highlightColor,
@@ -160,9 +160,9 @@ class AnimatedIconButton extends StatefulWidget {
     this.disabledColor,
     this.duration,
     this.focusNode,
-    this.autofocus,
+    this.autofocus = false,
     this.tooltip,
-    this.enableFeedback,
+    this.enableFeedback = true,
     this.constraints,
     this.visualDensity,
     this.padding,
@@ -225,36 +225,36 @@ class _AnimatedIconButtonState extends State<AnimatedIconButton>
     this.animationController,
     this.splashRadius,
   });
-  double size;
-  Icon startIcon;
-  Icon endIcon;
-  Color startBackgroundColor;
-  Color endBackgroundColor;
-  Duration duration;
-  Function onPressed;
-  Color focusColor;
-  Color hoverColor;
-  Color highlightColor;
-  Color splashColor;
-  Color disabledColor;
-  FocusNode focusNode;
+  double? size;
+  Icon? startIcon;
+  Icon? endIcon;
+  Color? startBackgroundColor;
+  Color? endBackgroundColor;
+  Duration? duration;
+  Function? onPressed;
+  Color? focusColor;
+  Color? hoverColor;
+  Color? highlightColor;
+  Color? splashColor;
+  Color? disabledColor;
+  FocusNode? focusNode;
   bool autofocus;
   bool enableFeedback;
-  String tooltip;
-  BoxConstraints constraints;
-  VisualDensity visualDensity;
-  EdgeInsets padding;
-  Alignment alignment;
-  AnimationController animationController;
-  double splashRadius;
+  String? tooltip;
+  BoxConstraints? constraints;
+  VisualDensity? visualDensity;
+  EdgeInsets? padding;
+  Alignment? alignment;
+  AnimationController? animationController;
+  double? splashRadius;
 
-  bool hasCustomAnimationController;
-  Icon nowIcon;
-  Color nowBackgroundColor;
+  late bool hasCustomAnimationController;
+  Icon? nowIcon;
+  Color? nowBackgroundColor;
   bool isIconAnimated = false;
-  AnimationController _arrowAnimationController;
-  Animation _arrowAnimation;
-  AnimationStatus _lastStatus;
+  late AnimationController _arrowAnimationController;
+  late Animation _arrowAnimation;
+  AnimationStatus? _lastStatus;
   static const Duration defaultDuration = Duration(milliseconds: 200);
 
   @override
@@ -264,11 +264,11 @@ class _AnimatedIconButtonState extends State<AnimatedIconButton>
     if (hasCustomAnimationController) {
       assert(duration == null,
           'Duration must be null when defining an animationController');
-      duration = animationController.duration;
+      duration = animationController!.duration;
     }
 
     _arrowAnimationController = hasCustomAnimationController
-        ? animationController
+        ? animationController!
         : AnimationController(vsync: this, duration: duration);
 
     if (hasCustomAnimationController) _addStatusListener();
@@ -296,7 +296,7 @@ class _AnimatedIconButtonState extends State<AnimatedIconButton>
   }
 
   _changeIcon() async {
-    var animationTime = duration.inMilliseconds;
+    var animationTime = duration!.inMilliseconds;
     var halfDuration = Duration(milliseconds: animationTime ~/ 2);
     await Future.delayed(halfDuration);
     setState(() {
@@ -305,7 +305,7 @@ class _AnimatedIconButtonState extends State<AnimatedIconButton>
   }
 
   _changeBackgroundColor() async {
-    var animationTime = duration.inMilliseconds;
+    var animationTime = duration!.inMilliseconds;
     var halfDuration = Duration(milliseconds: animationTime ~/ 2);
     await Future.delayed(halfDuration);
     setState(() {
@@ -330,9 +330,9 @@ class _AnimatedIconButtonState extends State<AnimatedIconButton>
     return IconButton(
       iconSize: size ?? 30,
       onPressed: hasCustomAnimationController
-          ? onPressed
+          ? onPressed as void Function()?
           : () {
-              onPressed();
+              onPressed!();
               _changeIcon();
               _changeBackgroundColor();
               _arrowAnimationController.isCompleted
@@ -341,7 +341,7 @@ class _AnimatedIconButtonState extends State<AnimatedIconButton>
             },
       icon: AnimatedBuilder(
           animation: _arrowAnimationController,
-          builder: (BuildContext context, Widget child) {
+          builder: (BuildContext context, Widget? child) {
             return Transform.rotate(
               angle: _arrowAnimation.value * 2.0 * math.pi,
               child: child,
@@ -354,8 +354,8 @@ class _AnimatedIconButtonState extends State<AnimatedIconButton>
       splashColor: splashColor,
       disabledColor: disabledColor,
       focusNode: focusNode,
-      autofocus: autofocus ?? false,
-      enableFeedback: enableFeedback ?? true,
+      autofocus: autofocus,
+      enableFeedback: enableFeedback,
       tooltip: tooltip,
       constraints: constraints,
       visualDensity: visualDensity,

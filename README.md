@@ -12,7 +12,7 @@ Follow these steps to use this library
 
 ```yaml
 dependencies:
-  animated_icon_button: ^0.3.0 #latest version
+  animated_icon_button: ^0.4.1 #latest version
 ```
 
 ### Add import package

@@ -8,11 +8,11 @@ branches:
 
 language: dart
 dart:
-    - stable
+    - master
 dart_task:
     - dartfmt
 install:
-    - git clone $FLUTTER_GITHUB -b stable
+    - git clone $FLUTTER_GITHUB -b master
 
 script:
   - ./flutter/bin/flutter doctor

@@ -316,7 +316,7 @@ class _AnimatedIconButtonState extends State<AnimatedIconButton>
     });
   }
 
-  _changeIcon() async {
+  void _changeIcon() async {
     var animationTime = duration!.inMilliseconds;
     var halfDuration = Duration(milliseconds: animationTime ~/ 2);
     await Future.delayed(halfDuration);
@@ -325,7 +325,7 @@ class _AnimatedIconButtonState extends State<AnimatedIconButton>
     });
   }
 
-  _changeBackgroundColor() async {
+  void _changeBackgroundColor() async {
     var animationTime = duration!.inMilliseconds;
     var halfDuration = Duration(milliseconds: animationTime ~/ 2);
     await Future.delayed(halfDuration);
@@ -354,6 +354,8 @@ class _AnimatedIconButtonState extends State<AnimatedIconButton>
             );
   }
 
+  //TODO: remove deprecated code
+  // ignore: unused_element
   void _onPressed() {
     onPressed?.call();
     if (!hasCustomAnimationController) {

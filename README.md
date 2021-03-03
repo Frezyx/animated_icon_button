@@ -1,5 +1,8 @@
 # animated_icon_button
 
+[![Build Status](https://travis-ci.com/Frezyx/animated_icon_button.svg?branch=master)](https://travis-ci.com/Frezyx/animated_icon_button) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) ![Pub](https://img.shields.io/pub/v/animated_icon_button.svg)
+![Stars](https://img.shields.io/github/stars/Frezyx/animated_icon_button?style=social)
+
 😊 Flutter package to create custom <strong>animated</strong> IconButton.</br>
 😵 <strong>Includes all available icons.</strong> Based on native IconButton.
 

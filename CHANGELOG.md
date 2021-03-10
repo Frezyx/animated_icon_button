@@ -1,3 +1,8 @@
+## 0.4.2 - 2021-03-10
+
+* AnimationDirection added
+* **breaking change:** icons passed as List
+
 ## 0.4.1 - 2021-02-28
 
 * Create travis QA

@@ -1,4 +1,4 @@
-## 0.4.2 - 2021-03-10
+## 1.0.0 - 2021-03-10
 
 * AnimationDirection added
 * **breaking change:** icons passed as List

@@ -14,11 +14,6 @@ class MyWidget extends StatelessWidget {
       home: Scaffold(
         body: AnimatedIconButton(
           key: const Key('testWidget'),
-          size: 35,
-          onPressed: () {
-            print('button without background color pressed');
-          },
-          duration: const Duration(milliseconds: 200),
           animationDirection: animationDirection,
           icons: const <AnimatedIconButtonEntry>[
             AnimatedIconButtonEntry(

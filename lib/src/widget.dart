@@ -10,7 +10,7 @@ class AnimatedIconButton extends StatefulWidget {
     this.size = 30,
     this.initialIcon = 0,
     required this.icons,
-    required this.onPressed,
+    this.onPressed,
     this.animationController,
     this.animationDirection = const AnimationDirection.bounce(),
     this.duration = const Duration(milliseconds: 200),

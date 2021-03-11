@@ -1,7 +1,7 @@
 ## 1.0.0 - 2021-03-10
 
+* **Breaking change:** icons passed as List
 * AnimationDirection added
-* **breaking change:** icons passed as List
 
 ## 0.4.1 - 2021-02-28
 

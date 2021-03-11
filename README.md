@@ -7,7 +7,8 @@
 😵 <strong>Includes all available icons.</strong> Based on native IconButton.
 
 ## Breaking Change
-With Version `0.4.2` a list of data (icon, etc.) must be passed. This enables the use of more than 2 icons.
+After `1.0.0` version you can use multiple icons.
+
 
 <img src="https://github.com/Frezyx/animated_icon_button/blob/master/example/rep_files/preview.gif?raw=true" width="270">
 
@@ -18,7 +19,7 @@ Follow these steps to use this library
 
 ```yaml
 dependencies:
-  animated_icon_button: ^0.4.1 #latest version
+  animated_icon_button: ^1.0.0 #latest version
 ```
 
 ### Add import package
@@ -29,13 +30,32 @@ import 'package:animated_icon_button/animated_icon_button.dart';
 
 ### Easy to use
 Simple example of use AnimatedIconButton<br>
-Put this code in your project at an screen and learn how it works 😊
+Put this code in your project at an screen and wait for magic 😊
+```dart
+    AnimatedIconButton(
+        onPressed: () => print('all icons pressed'),
+        icons: [
+            AnimatedIconButtonEntry(
+                icon: Icon(Icons.add),
+                onPressed: () => print('add pressed'),
+            ),
+            AnimatedIconButtonEntry(
+                icon: Icon(Icons.close),
+            ),
+        ],
+    ),
+```
+
+
+### More icons
+Now you can use more than 2 icons
+Add new icons to your list and they will change one by one
 
 ```dart
     AnimatedIconButton(
         size: 35,
         onPressed: () {
-            print('pressed for all icons');
+            print('all icons pressed');
         },
         duration: const Duration(milliseconds: 200),
         icons: <AnimatedIconButtonEntry>[
@@ -44,7 +64,7 @@ Put this code in your project at an screen and learn how it works 😊
                     Icons.mic,
                     color: Colors.purple,
                 ),
-                onPressed: () => print('just pressed the mic'),
+                onPressed: () => print('mic pressed'),
                 backgroundColor: Colors.white,
             ),
             AnimatedIconButtonEntry(
@@ -80,7 +100,7 @@ In order to animate your icons in a custom way, like on text changed or when pre
         animationController: animationController,
         size: 35,
         onPressed: () {
-            print('pressed for all icons');
+            print('all icons pressed');
         },
         duration: const Duration(milliseconds: 200),
         icons: <AnimatedIconButtonEntry>[
@@ -89,7 +109,7 @@ In order to animate your icons in a custom way, like on text changed or when pre
                     Icons.mic,
                     color: Colors.purple,
                 ),
-                onPressed: () => print('just pressed the mic'),
+                onPressed: () => print('mic pressed'),
                 backgroundColor: Colors.white,
             ),
             AnimatedIconButtonEntry(

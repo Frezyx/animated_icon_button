@@ -15,22 +15,22 @@ class MyWidget extends StatelessWidget {
         body: AnimatedIconButton(
           key: const Key('testWidget'),
           animationDirection: animationDirection,
-          icons: const <AnimatedIconButtonEntry>[
-            AnimatedIconButtonEntry(
+          icons: const <AnimatedIconItem>[
+            AnimatedIconItem(
               icon: Icon(
                 Icons.mic,
                 color: Colors.purple,
               ),
               backgroundColor: Colors.white,
             ),
-            AnimatedIconButtonEntry(
+            AnimatedIconItem(
               icon: Icon(
                 Icons.g_translate,
                 color: Colors.purple,
               ),
               backgroundColor: Colors.white,
             ),
-            AnimatedIconButtonEntry(
+            AnimatedIconItem(
               icon: Icon(
                 Icons.collections_sharp,
                 color: Colors.purple,

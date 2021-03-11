@@ -36,7 +36,7 @@ class AnimatedIconButton extends StatefulWidget {
   final int initialIcon;
 
   /// The [AnimatedIcon] of the [AnimatedIconButton]
-  final List<AnimatedIconButtonEntry> icons;
+  final List<AnimatedIconItem> icons;
 
   /// Animation time of the [AnimatedIconButton].
   ///
@@ -179,7 +179,7 @@ class _AnimatedIconButtonState extends State<AnimatedIconButton>
     with SingleTickerProviderStateMixin {
   _AnimatedIconButtonState({
     required int initialIcon,
-    required List<AnimatedIconButtonEntry> icons,
+    required List<AnimatedIconItem> icons,
     required AnimationDirection animationDirection,
   })   : assert(initialIcon < icons.length,
             'initialIcon must be lower than the icons.length'),
@@ -191,7 +191,7 @@ class _AnimatedIconButtonState extends State<AnimatedIconButton>
 
   int nowIndex;
   AnimationDirection nowDirection;
-  AnimatedIconButtonEntry nowIcon;
+  AnimatedIconItem nowIcon;
   late final Animation<double> _arrowAnimation;
   late final Duration halfDuration;
 

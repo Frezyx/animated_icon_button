@@ -52,15 +52,15 @@ class _MyHomePageState extends State<MyHomePage> {
                           print('button with background color pressed');
                         },
                         duration: const Duration(milliseconds: 200),
-                        icons: const <AnimatedIconButtonEntry>[
-                          AnimatedIconButtonEntry(
+                        icons: const <AnimatedIconItem>[
+                          AnimatedIconItem(
                             icon: Icon(
                               Icons.add,
                               color: Colors.purple,
                             ),
                             backgroundColor: Colors.white,
                           ),
-                          AnimatedIconButtonEntry(
+                          AnimatedIconItem(
                             icon: Icon(
                               Icons.close,
                               color: Colors.white,
@@ -86,8 +86,8 @@ class _MyHomePageState extends State<MyHomePage> {
                           print('button without background color pressed');
                         },
                         duration: const Duration(milliseconds: 200),
-                        icons: <AnimatedIconButtonEntry>[
-                          AnimatedIconButtonEntry(
+                        icons: <AnimatedIconItem>[
+                          AnimatedIconItem(
                             icon: const Icon(
                               Icons.mic,
                               color: Colors.purple,
@@ -95,14 +95,14 @@ class _MyHomePageState extends State<MyHomePage> {
                             onPressed: () => print('just pressed the mic'),
                             backgroundColor: Colors.white,
                           ),
-                          const AnimatedIconButtonEntry(
+                          const AnimatedIconItem(
                             icon: Icon(
                               Icons.g_translate,
                               color: Colors.purple,
                             ),
                             backgroundColor: Colors.white,
                           ),
-                          const AnimatedIconButtonEntry(
+                          const AnimatedIconItem(
                             icon: Icon(
                               Icons.collections_sharp,
                               color: Colors.purple,
@@ -141,14 +141,14 @@ class _MyHomePageState extends State<MyHomePage> {
                           print('button with color pressed');
                         },
                         duration: const Duration(milliseconds: 200),
-                        icons: const <AnimatedIconButtonEntry>[
-                          AnimatedIconButtonEntry(
+                        icons: const <AnimatedIconItem>[
+                          AnimatedIconItem(
                             icon: Icon(
                               Icons.add,
                               color: Colors.purple,
                             ),
                           ),
-                          AnimatedIconButtonEntry(
+                          AnimatedIconItem(
                             icon: Icon(
                               Icons.close,
                               color: Colors.red,
@@ -173,15 +173,15 @@ class _MyHomePageState extends State<MyHomePage> {
                           print('button without color change pressed');
                         },
                         duration: const Duration(milliseconds: 200),
-                        icons: const <AnimatedIconButtonEntry>[
-                          AnimatedIconButtonEntry(
+                        icons: const <AnimatedIconItem>[
+                          AnimatedIconItem(
                             icon: Icon(
                               Icons.add,
                               color: Colors.purple,
                             ),
                             backgroundColor: Colors.white,
                           ),
-                          AnimatedIconButtonEntry(
+                          AnimatedIconItem(
                             icon: Icon(
                               Icons.close,
                               color: Colors.purple,

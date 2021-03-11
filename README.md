@@ -6,6 +6,10 @@
 😊 Flutter package to create custom <strong>animated</strong> IconButton.</br>
 😵 <strong>Includes all available icons.</strong> Based on native IconButton.
 
+## Breaking Change
+After `1.0.0` version you can use multiple icons.
+
+
 <img src="https://github.com/Frezyx/animated_icon_button/blob/master/example/rep_files/preview.gif?raw=true" width="270">
 
 ## Getting Started
@@ -15,7 +19,7 @@ Follow these steps to use this library
 
 ```yaml
 dependencies:
-  animated_icon_button: ^0.4.1 #latest version
+  animated_icon_button: ^1.0.0 #latest version
 ```
 
 ### Add import package
@@ -26,24 +30,59 @@ import 'package:animated_icon_button/animated_icon_button.dart';
 
 ### Easy to use
 Simple example of use AnimatedIconButton<br>
-Put this code in your project at an screen and learn how it works 😊
+Put this code in your project at an screen and wait for magic 😊
+```dart
+    AnimatedIconButton(
+        onPressed: () => print('all icons pressed'),
+        icons: [
+            AnimatedIconButtonEntry(
+                icon: Icon(Icons.add),
+                onPressed: () => print('add pressed'),
+            ),
+            AnimatedIconButtonEntry(
+                icon: Icon(Icons.close),
+            ),
+        ],
+    ),
+```
+
+
+### More icons
+Now you can use more than 2 icons
+Add new icons to your list and they will change one by one
 
 ```dart
     AnimatedIconButton(
         size: 35,
         onPressed: () {
-          print("button with color pressed");
+            print('all icons pressed');
         },
-        duration: Duration(milliseconds: 200),
-        endIcon: Icon(
-            Icons.close,
-                color: Colors.red,
+        duration: const Duration(milliseconds: 200),
+        icons: <AnimatedIconButtonEntry>[
+            AnimatedIconButtonEntry(
+                icon: Icon(
+                    Icons.mic,
+                    color: Colors.purple,
+                ),
+                onPressed: () => print('mic pressed'),
+                backgroundColor: Colors.white,
             ),
-        startIcon: Icon(
-            Icons.add,
-            color: Colors.purple,
-        ),
-    )
+            AnimatedIconButtonEntry(
+                icon: Icon(
+                    Icons.g_translate,
+                    color: Colors.purple,
+                ),
+                backgroundColor: Colors.white,
+            ),
+            AnimatedIconButtonEntry(
+                icon: Icon(
+                    Icons.collections_sharp,
+                    color: Colors.purple,
+                ),
+                backgroundColor: Colors.white,
+            ),
+        ],
+    ),
 ```
 
 ### Custom animation controller
@@ -61,35 +100,37 @@ In order to animate your icons in a custom way, like on text changed or when pre
         animationController: animationController,
         size: 35,
         onPressed: () {
-          print("button with color pressed");
+            print('all icons pressed');
         },
-        endIcon: Icon(
-            Icons.close,
-                color: Colors.red,
+        duration: const Duration(milliseconds: 200),
+        icons: <AnimatedIconButtonEntry>[
+            AnimatedIconButtonEntry(
+                icon: Icon(
+                    Icons.mic,
+                    color: Colors.purple,
+                ),
+                onPressed: () => print('mic pressed'),
+                backgroundColor: Colors.white,
             ),
-        startIcon: Icon(
-            Icons.add,
-            color: Colors.purple,
-        ),
-    )
+            AnimatedIconButtonEntry(
+                icon: Icon(
+                    Icons.g_translate,
+                    color: Colors.purple,
+                ),
+                backgroundColor: Colors.white,
+            ),
+            AnimatedIconButtonEntry(
+                icon: Icon(
+                    Icons.collections_sharp,
+                    color: Colors.purple,
+                ),
+                backgroundColor: Colors.white,
+            ),
+        ],
+    ),
 ```
 
 Then, whenever you want, execute your ```animationController.forward()``` and ```animationController.reverse()``` methods to get your icons animated.
 
-Don't forget to remove ```duration``` from your ```AnimatedIconButton``` when using this property.
-
-### Attributes
-
-<strong>size:</strong> The size of AnimatedIconButton <br>
-<strong>startIcon:</strong> The icon of the AnimatedIconButton when button is not pressed.<br>
-<strong>endIcon:</strong> The icon of the AnimatedIconButton when button is pressed. <br>
-<strong>duration:</strong> Animation time of the AnimatedIconButton. <br>
-<strong>startBackgroundColor:</strong> The background Color of the AnimatedIconButton when button is not pressed. <br>
-<strong>endBackgroundColor:</strong> The background Color of the AnimatedIconButton when button is pressed. <br>
-<strong>And all fields of the parent element:</strong> <a href="https://api.flutter.dev/flutter/material/IconButton-class.html">IconButton</a>
-<br><br>
-
-For help getting started with 😍 Flutter, view our 
-[online documentation](https://flutter.dev/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+Don't forget when you use this property ```duration``` is not used, so it can be emitted.
 

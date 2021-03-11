@@ -13,15 +13,15 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-class _$AnimatedIconButtonEntryTearOff {
-  const _$AnimatedIconButtonEntryTearOff();
+class _$AnimatedIconItemTearOff {
+  const _$AnimatedIconItemTearOff();
 
-  _AnimatedIconButtonEntry call(
+  _AnimatedIconItem call(
       {required Icon icon,
       Color backgroundColor = Colors.transparent,
       String? tooltip,
       void Function()? onPressed}) {
-    return _AnimatedIconButtonEntry(
+    return _AnimatedIconItem(
       icon: icon,
       backgroundColor: backgroundColor,
       tooltip: tooltip,
@@ -31,25 +31,25 @@ class _$AnimatedIconButtonEntryTearOff {
 }
 
 /// @nodoc
-const $AnimatedIconButtonEntry = _$AnimatedIconButtonEntryTearOff();
+const $AnimatedIconItem = _$AnimatedIconItemTearOff();
 
 /// @nodoc
-mixin _$AnimatedIconButtonEntry {
+mixin _$AnimatedIconItem {
   Icon get icon => throw _privateConstructorUsedError;
   Color get backgroundColor => throw _privateConstructorUsedError;
   String? get tooltip => throw _privateConstructorUsedError;
   void Function()? get onPressed => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $AnimatedIconButtonEntryCopyWith<AnimatedIconButtonEntry> get copyWith =>
+  $AnimatedIconItemCopyWith<AnimatedIconItem> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $AnimatedIconButtonEntryCopyWith<$Res> {
-  factory $AnimatedIconButtonEntryCopyWith(AnimatedIconButtonEntry value,
-          $Res Function(AnimatedIconButtonEntry) then) =
-      _$AnimatedIconButtonEntryCopyWithImpl<$Res>;
+abstract class $AnimatedIconItemCopyWith<$Res> {
+  factory $AnimatedIconItemCopyWith(
+          AnimatedIconItem value, $Res Function(AnimatedIconItem) then) =
+      _$AnimatedIconItemCopyWithImpl<$Res>;
   $Res call(
       {Icon icon,
       Color backgroundColor,
@@ -58,13 +58,13 @@ abstract class $AnimatedIconButtonEntryCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$AnimatedIconButtonEntryCopyWithImpl<$Res>
-    implements $AnimatedIconButtonEntryCopyWith<$Res> {
-  _$AnimatedIconButtonEntryCopyWithImpl(this._value, this._then);
+class _$AnimatedIconItemCopyWithImpl<$Res>
+    implements $AnimatedIconItemCopyWith<$Res> {
+  _$AnimatedIconItemCopyWithImpl(this._value, this._then);
 
-  final AnimatedIconButtonEntry _value;
+  final AnimatedIconItem _value;
   // ignore: unused_field
-  final $Res Function(AnimatedIconButtonEntry) _then;
+  final $Res Function(AnimatedIconItem) _then;
 
   @override
   $Res call({
@@ -95,11 +95,11 @@ class _$AnimatedIconButtonEntryCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$AnimatedIconButtonEntryCopyWith<$Res>
-    implements $AnimatedIconButtonEntryCopyWith<$Res> {
-  factory _$AnimatedIconButtonEntryCopyWith(_AnimatedIconButtonEntry value,
-          $Res Function(_AnimatedIconButtonEntry) then) =
-      __$AnimatedIconButtonEntryCopyWithImpl<$Res>;
+abstract class _$AnimatedIconItemCopyWith<$Res>
+    implements $AnimatedIconItemCopyWith<$Res> {
+  factory _$AnimatedIconItemCopyWith(
+          _AnimatedIconItem value, $Res Function(_AnimatedIconItem) then) =
+      __$AnimatedIconItemCopyWithImpl<$Res>;
   @override
   $Res call(
       {Icon icon,
@@ -109,16 +109,15 @@ abstract class _$AnimatedIconButtonEntryCopyWith<$Res>
 }
 
 /// @nodoc
-class __$AnimatedIconButtonEntryCopyWithImpl<$Res>
-    extends _$AnimatedIconButtonEntryCopyWithImpl<$Res>
-    implements _$AnimatedIconButtonEntryCopyWith<$Res> {
-  __$AnimatedIconButtonEntryCopyWithImpl(_AnimatedIconButtonEntry _value,
-      $Res Function(_AnimatedIconButtonEntry) _then)
-      : super(_value, (v) => _then(v as _AnimatedIconButtonEntry));
+class __$AnimatedIconItemCopyWithImpl<$Res>
+    extends _$AnimatedIconItemCopyWithImpl<$Res>
+    implements _$AnimatedIconItemCopyWith<$Res> {
+  __$AnimatedIconItemCopyWithImpl(
+      _AnimatedIconItem _value, $Res Function(_AnimatedIconItem) _then)
+      : super(_value, (v) => _then(v as _AnimatedIconItem));
 
   @override
-  _AnimatedIconButtonEntry get _value =>
-      super._value as _AnimatedIconButtonEntry;
+  _AnimatedIconItem get _value => super._value as _AnimatedIconItem;
 
   @override
   $Res call({
@@ -127,7 +126,7 @@ class __$AnimatedIconButtonEntryCopyWithImpl<$Res>
     Object? tooltip = freezed,
     Object? onPressed = freezed,
   }) {
-    return _then(_AnimatedIconButtonEntry(
+    return _then(_AnimatedIconItem(
       icon: icon == freezed
           ? _value.icon
           : icon // ignore: cast_nullable_to_non_nullable
@@ -149,8 +148,8 @@ class __$AnimatedIconButtonEntryCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$_AnimatedIconButtonEntry implements _AnimatedIconButtonEntry {
-  const _$_AnimatedIconButtonEntry(
+class _$_AnimatedIconItem implements _AnimatedIconItem {
+  const _$_AnimatedIconItem(
       {required this.icon,
       this.backgroundColor = Colors.transparent,
       this.tooltip,
@@ -168,13 +167,13 @@ class _$_AnimatedIconButtonEntry implements _AnimatedIconButtonEntry {
 
   @override
   String toString() {
-    return 'AnimatedIconButtonEntry(icon: $icon, backgroundColor: $backgroundColor, tooltip: $tooltip, onPressed: $onPressed)';
+    return 'AnimatedIconItem(icon: $icon, backgroundColor: $backgroundColor, tooltip: $tooltip, onPressed: $onPressed)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _AnimatedIconButtonEntry &&
+        (other is _AnimatedIconItem &&
             (identical(other.icon, icon) ||
                 const DeepCollectionEquality().equals(other.icon, icon)) &&
             (identical(other.backgroundColor, backgroundColor) ||
@@ -198,17 +197,16 @@ class _$_AnimatedIconButtonEntry implements _AnimatedIconButtonEntry {
 
   @JsonKey(ignore: true)
   @override
-  _$AnimatedIconButtonEntryCopyWith<_AnimatedIconButtonEntry> get copyWith =>
-      __$AnimatedIconButtonEntryCopyWithImpl<_AnimatedIconButtonEntry>(
-          this, _$identity);
+  _$AnimatedIconItemCopyWith<_AnimatedIconItem> get copyWith =>
+      __$AnimatedIconItemCopyWithImpl<_AnimatedIconItem>(this, _$identity);
 }
 
-abstract class _AnimatedIconButtonEntry implements AnimatedIconButtonEntry {
-  const factory _AnimatedIconButtonEntry(
+abstract class _AnimatedIconItem implements AnimatedIconItem {
+  const factory _AnimatedIconItem(
       {required Icon icon,
       Color backgroundColor,
       String? tooltip,
-      void Function()? onPressed}) = _$_AnimatedIconButtonEntry;
+      void Function()? onPressed}) = _$_AnimatedIconItem;
 
   @override
   Icon get icon => throw _privateConstructorUsedError;
@@ -220,6 +218,6 @@ abstract class _AnimatedIconButtonEntry implements AnimatedIconButtonEntry {
   void Function()? get onPressed => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$AnimatedIconButtonEntryCopyWith<_AnimatedIconButtonEntry> get copyWith =>
+  _$AnimatedIconItemCopyWith<_AnimatedIconItem> get copyWith =>
       throw _privateConstructorUsedError;
 }

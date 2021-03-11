@@ -5,10 +5,10 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'data.freezed.dart';
 
 @freezed
-abstract class AnimatedIconButtonEntry with _$AnimatedIconButtonEntry {
-  const factory AnimatedIconButtonEntry(
+class AnimatedIconItem with _$AnimatedIconItem {
+  const factory AnimatedIconItem(
       {required Icon icon,
       @Default(Colors.transparent) Color backgroundColor,
       String? tooltip,
-      VoidCallback? onPressed}) = _AnimatedIconButtonEntry;
+      VoidCallback? onPressed}) = _AnimatedIconItem;
 }

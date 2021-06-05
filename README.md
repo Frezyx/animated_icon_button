@@ -1,16 +1,22 @@
-# animated_icon_button
-
-[![Build Status](https://travis-ci.com/Frezyx/animated_icon_button.svg?branch=master)](https://travis-ci.com/Frezyx/animated_icon_button) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) ![Pub](https://img.shields.io/pub/v/animated_icon_button.svg)
-![Stars](https://img.shields.io/github/stars/Frezyx/animated_icon_button?style=social)
-
-😊 Flutter package to create custom <strong>animated</strong> IconButton.</br>
+<h1 align="center">animated_icon_button </h1>
+<h2 align="center">  😊 Flutter package to create custom <strong>animated</strong> IconButton.</br></h2>
+<p align="center">
 😵 <strong>Includes all available icons.</strong> Based on native IconButton.
+</p>
+<br>
+
+<p align="center">
+<img src='https://travis-ci.com/Frezyx/animated_icon_button.svg?branch=master'>
+<img src='https://img.shields.io/badge/License-MIT-yellow.svg'>
+<img src='https://img.shields.io/pub/v/animated_icon_button.svg'>
+<img src='https://img.shields.io/github/stars/Frezyx/animated_icon_button?style=social'>
+</p>
+
+<p align="center">
+<img src="https://github.com/Frezyx/animated_icon_button/blob/master/example/rep_files/preview.gif?raw=true" width="270"></p>
 
 ## Breaking Change
 After `1.0.0` version you can use multiple icons.
-
-
-<img src="https://github.com/Frezyx/animated_icon_button/blob/master/example/rep_files/preview.gif?raw=true" width="270">
 
 ## Getting Started
 Follow these steps to use this library

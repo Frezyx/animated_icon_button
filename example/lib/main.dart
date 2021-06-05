@@ -1,6 +1,5 @@
 import 'package:animated_icon_button/animated_icon_button.dart';
 import 'package:flutter/material.dart';
-import 'package:simple_icons/simple_icons.dart';
 
 void main() {
   runApp(MyApp());
@@ -10,108 +9,39 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primaryColor: Colors.greenAccent,
+        primarySwatch: Colors.purple,
       ),
-      home: MyHomePage(),
+      home: HomePage(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
+class HomePage extends StatefulWidget {
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _HomePageState createState() => _HomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage>
-    with SingleTickerProviderStateMixin {
-  late AnimationController _progressBorderAc;
-  late Animation<double> animation;
-
-  @override
-  void initState() {
-    _progressBorderAc = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 300),
-    );
-    final tween = Tween<double>(
-      begin: 25.0,
-      end: 50.0,
-    );
-    animation = tween.animate(_progressBorderAc)
-      ..addStatusListener((state) => print('$state'));
-
-    super.initState();
-  }
-
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
-    final Color color = Colors.blueAccent;
-    return Material(
-      color: const Color(0xFF212121),
-      child: Center(
-        child: AnimatedBuilder(
-          builder: (BuildContext context, Widget? child) {
-            return Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(100),
-                boxShadow: [
-                  BoxShadow(
-                    color: color.withOpacity(
-                      animation.value / 100 * 2,
-                    ),
-                    blurRadius: animation.value,
-                  )
-                ],
-              ),
-              child: AnimatedIconButton(
-                size: size.width * 0.25,
-                onPressed: () async {
-                  await _progressBorderAc.forward();
-                  await _progressBorderAc.reverse();
-                },
-                duration: const Duration(milliseconds: 300),
-                icons: <AnimatedIconItem>[
-                  AnimatedIconItem(
-                    icon: Icon(SimpleIcons.amd, color: color),
-                    backgroundColor: Colors.white,
-                  ),
-                  AnimatedIconItem(
-                    icon: Icon(SimpleIcons.nasa, color: color),
-                    backgroundColor: Colors.white,
-                  ),
-                  AnimatedIconItem(
-                    icon: Icon(SimpleIcons.intel, color: color),
-                    backgroundColor: Colors.white,
-                  ),
-                  AnimatedIconItem(
-                    icon: Icon(SimpleIcons.man, color: color),
-                    backgroundColor: Colors.white,
-                  ),
-                  AnimatedIconItem(
-                    icon: Icon(SimpleIcons.acer, color: color),
-                    backgroundColor: Colors.white,
-                  ),
-                  AnimatedIconItem(
-                    icon: Icon(SimpleIcons.travisci, color: color),
-                    backgroundColor: Colors.white,
-                  ),
-                  AnimatedIconItem(
-                    icon: Icon(SimpleIcons.ea, color: color),
-                    backgroundColor: Colors.white,
-                  ),
-                  AnimatedIconItem(
-                    icon: Icon(SimpleIcons.dior, color: color),
-                    backgroundColor: Colors.white,
-                  ),
-                ],
-              ),
-            );
-          },
-          animation: animation,
+    return Scaffold(
+      body: Center(
+        child: AnimatedIconButton(
+          size: 100,
+          onPressed: () {},
+          duration: const Duration(milliseconds: 500),
+          splashColor: Colors.transparent,
+          icons: const <AnimatedIconItem>[
+            AnimatedIconItem(
+              icon: Icon(Icons.add, color: Colors.purple),
+            ),
+            AnimatedIconItem(
+              icon: Icon(Icons.close, color: Colors.purple),
+            ),
+          ],
         ),
+        // AnimatedIconButton
       ),
     );
   }

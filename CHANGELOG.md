@@ -1,3 +1,7 @@
+## 1.0.2 - 2021-06-06
+
+* Fix analyser issues
+
 ## 1.0.1 - 2021-06-06
 
 * Update examples && README.md

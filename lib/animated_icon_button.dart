@@ -1,3 +1,3 @@
-export 'src/data.dart';
-export 'src/unions.dart';
-export 'src/widget.dart';
+library animated_icon_button;
+
+export 'src/src.dart';

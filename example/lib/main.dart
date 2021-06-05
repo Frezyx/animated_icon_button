@@ -1,5 +1,6 @@
 import 'package:animated_icon_button/animated_icon_button.dart';
 import 'package:flutter/material.dart';
+import 'package:simple_icons/simple_icons.dart';
 
 void main() {
   runApp(MyApp());
@@ -9,8 +10,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.purple,
+        primaryColor: Colors.greenAccent,
       ),
       home: MyHomePage(),
     );
@@ -22,185 +24,93 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyHomePageState extends State<MyHomePage>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _progressBorderAc;
+  late Animation<double> animation;
+
+  @override
+  void initState() {
+    _progressBorderAc = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 300),
+    );
+    final tween = Tween<double>(
+      begin: 25.0,
+      end: 50.0,
+    );
+    animation = tween.animate(_progressBorderAc)
+      ..addStatusListener((state) => print('$state'));
+
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('animated_icon_button v1.0.0'),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'With background color',
-              style: TextStyle(fontSize: 18, color: Colors.black38),
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                Column(
-                  children: <Widget>[
-                    // AnimatedIconButton
-                    AnimatedIconButton(
-                      size: 35,
-                      onPressed: () {
-                        print('button with background color pressed');
-                      },
-                      duration: const Duration(milliseconds: 200),
-                      icons: const <AnimatedIconItem>[
-                        AnimatedIconItem(
-                          icon: Icon(
-                            Icons.add,
-                            color: Colors.purple,
-                          ),
-                          backgroundColor: Colors.white,
-                        ),
-                        AnimatedIconItem(
-                          icon: Icon(
-                            Icons.close,
-                            color: Colors.white,
-                          ),
-                          backgroundColor: Colors.red,
-                        ),
-                      ],
+    final Size size = MediaQuery.of(context).size;
+    final Color color = Colors.blueAccent;
+    return Material(
+      color: const Color(0xFF212121),
+      child: Center(
+        child: AnimatedBuilder(
+          builder: (BuildContext context, Widget? child) {
+            return Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(100),
+                boxShadow: [
+                  BoxShadow(
+                    color: color.withOpacity(
+                      animation.value / 100 * 2,
                     ),
-                    // AnimatedIconButton
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    const Text('With bg color change',
-                        style: TextStyle(fontSize: 12)),
-                  ],
-                ),
-                Column(
-                  children: <Widget>[
-                    // AnimatedIconButton
-                    AnimatedIconButton(
-                      size: 35,
-                      onPressed: () {
-                        print('button without background color pressed');
-                      },
-                      duration: const Duration(milliseconds: 200),
-                      icons: <AnimatedIconItem>[
-                        AnimatedIconItem(
-                          icon: const Icon(
-                            Icons.mic,
-                            color: Colors.purple,
-                          ),
-                          onPressed: () => print('just pressed the mic'),
-                          backgroundColor: Colors.white,
-                        ),
-                        const AnimatedIconItem(
-                          icon: Icon(
-                            Icons.g_translate,
-                            color: Colors.purple,
-                          ),
-                          backgroundColor: Colors.white,
-                        ),
-                        const AnimatedIconItem(
-                          icon: Icon(
-                            Icons.collections_sharp,
-                            color: Colors.purple,
-                          ),
-                          backgroundColor: Colors.white,
-                        ),
-                      ],
-                    ),
-                    // AnimatedIconButton
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    const Text('Without bg color change',
-                        style: TextStyle(fontSize: 12)),
-                  ],
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 70,
-            ),
-            const Text('Without background color',
-                style: TextStyle(fontSize: 18, color: Colors.black38)),
-            const SizedBox(
-              height: 30,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                Column(
-                  children: <Widget>[
-                    // AnimatedIconButton
-                    AnimatedIconButton(
-                      size: 35,
-                      onPressed: () {
-                        print('button with color pressed');
-                      },
-                      duration: const Duration(milliseconds: 200),
-                      icons: const <AnimatedIconItem>[
-                        AnimatedIconItem(
-                          icon: Icon(
-                            Icons.add,
-                            color: Colors.purple,
-                          ),
-                        ),
-                        AnimatedIconItem(
-                          icon: Icon(
-                            Icons.close,
-                            color: Colors.red,
-                          ),
-                        ),
-                      ],
-                    ),
-                    // AnimatedIconButton
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    const Text('With color change',
-                        style: TextStyle(fontSize: 12)),
-                  ],
-                ),
-                Column(
-                  children: <Widget>[
-                    // AnimatedIconButton
-                    AnimatedIconButton(
-                      size: 35,
-                      onPressed: () {
-                        print('button without color change pressed');
-                      },
-                      duration: const Duration(milliseconds: 200),
-                      icons: const <AnimatedIconItem>[
-                        AnimatedIconItem(
-                          icon: Icon(
-                            Icons.add,
-                            color: Colors.purple,
-                          ),
-                          backgroundColor: Colors.white,
-                        ),
-                        AnimatedIconItem(
-                          icon: Icon(
-                            Icons.close,
-                            color: Colors.purple,
-                          ),
-                          backgroundColor: Colors.red,
-                        ),
-                      ],
-                    ),
-                    // AnimatedIconButton
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    const Text('Without color change',
-                        style: TextStyle(fontSize: 12)),
-                  ],
-                ),
-              ],
-            ),
-          ],
+                    blurRadius: animation.value,
+                  )
+                ],
+              ),
+              child: AnimatedIconButton(
+                size: size.width * 0.25,
+                onPressed: () async {
+                  await _progressBorderAc.forward();
+                  await _progressBorderAc.reverse();
+                },
+                duration: const Duration(milliseconds: 300),
+                icons: <AnimatedIconItem>[
+                  AnimatedIconItem(
+                    icon: Icon(SimpleIcons.amd, color: color),
+                    backgroundColor: Colors.white,
+                  ),
+                  AnimatedIconItem(
+                    icon: Icon(SimpleIcons.nasa, color: color),
+                    backgroundColor: Colors.white,
+                  ),
+                  AnimatedIconItem(
+                    icon: Icon(SimpleIcons.intel, color: color),
+                    backgroundColor: Colors.white,
+                  ),
+                  AnimatedIconItem(
+                    icon: Icon(SimpleIcons.man, color: color),
+                    backgroundColor: Colors.white,
+                  ),
+                  AnimatedIconItem(
+                    icon: Icon(SimpleIcons.acer, color: color),
+                    backgroundColor: Colors.white,
+                  ),
+                  AnimatedIconItem(
+                    icon: Icon(SimpleIcons.travisci, color: color),
+                    backgroundColor: Colors.white,
+                  ),
+                  AnimatedIconItem(
+                    icon: Icon(SimpleIcons.ea, color: color),
+                    backgroundColor: Colors.white,
+                  ),
+                  AnimatedIconItem(
+                    icon: Icon(SimpleIcons.dior, color: color),
+                    backgroundColor: Colors.white,
+                  ),
+                ],
+              ),
+            );
+          },
+          animation: animation,
         ),
       ),
     );

@@ -16,7 +16,7 @@
 <img src="https://github.com/Frezyx/animated_icon_button/blob/master/example/rep_files/preview.gif?raw=true" width="270"></p>
 
 ## Breaking Change
-After `1.0.1` version you can use multiple icons.
+After `1.0.2` version you can use multiple icons.
 
 ## Getting Started
 Follow these steps to use this library
@@ -25,7 +25,7 @@ Follow these steps to use this library
 
 ```yaml
 dependencies:
-  animated_icon_button: ^1.0.1 #latest version
+  animated_icon_button: ^1.0.2 #latest version
 ```
 
 ### Add import package

@@ -1,3 +1,7 @@
+## 0.4.1 - 2021-06-06
+
+* Update examples && README.md
+
 ## 1.0.0 - 2021-03-10
 
 * **Breaking change:** icons passed as List

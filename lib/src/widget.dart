@@ -181,7 +181,7 @@ class _AnimatedIconButtonState extends State<AnimatedIconButton>
     required int initialIcon,
     required List<AnimatedIconItem> icons,
     required AnimationDirection animationDirection,
-  })   : assert(initialIcon < icons.length,
+  })  : assert(initialIcon < icons.length,
             'initialIcon must be lower than the icons.length'),
         nowIndex = initialIcon,
         nowDirection = animationDirection,

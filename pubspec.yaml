@@ -1,7 +1,6 @@
 name: animated_icon_button
 description: Flutter package to create custom animated IconButton. Includes all available icons. Based on native IconButton.
 version: 1.0.1
-author: youngfrezyx@gmail.com
 homepage: https://github.com/Frezyx/animated_icon_button
 
 environment:
